@@ -1,0 +1,14 @@
+<h2><%= @team.name %></h2>
+
+<h3>Players: <a href="/players/<%= @players[0].id() %>"><%= @players[0].name() %></a> and <a href="/players/<%= @players[1].id() %>"><%= @players[1].name() %></a></h3>
+
+<form action="/teams/<%= @team.id() %>/edit" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <input id="name" name="name" type="text" placeholder="Update team name">
+  <button type="submit" class="btn btn-primary">Update</button>
+</form>
+
+<form action="/teams/<%= @team.id() %>/delete" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <button type="submit" class="btn btn-danger">Delete team</button>
+</form>

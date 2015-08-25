@@ -1,0 +1,23 @@
+<h2><%= @player.name() %></h2>
+
+<h3>Team: <%= @team.name %></h3>
+
+<h3>Teammate:
+  <% @team.players().each do |player| %>
+    <% if player.id == @player.id() %>
+    <% else %>
+      <%= player.name() %>
+    <% end %>
+  <% end %>
+</h3>
+
+<form action="/players/<%= @player.id() %>/edit" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <input id="name" name="name" type="text" placeholder="Update player name">
+  <button type="submit" class="btn btn-primary">Update</button>
+</form>
+
+<form action="/players/<%= @player.id() %>/delete" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <button type="submit" class="btn btn-danger">Delete player</button>
+</form>
